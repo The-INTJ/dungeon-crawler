@@ -2,11 +2,11 @@
 import styled from "styled-components";
 import monsterImage from "../assets/react.svg";
 
-const CardMonster = () => {
+const MonsterCard = () => {
     const monster = {
         name: "Goblin",
-        health: 100,
-        attack: 20,
+        health: 10,
+        attack: 2,
         image: monsterImage,
     };
   return (
@@ -21,7 +21,7 @@ const CardMonster = () => {
   );
 };
 
-export default CardMonster;
+export default MonsterCard;
 
 const CardContainer = styled.div`
   border: 1px solid #ccc;

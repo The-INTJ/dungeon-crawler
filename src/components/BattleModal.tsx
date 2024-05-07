@@ -1,6 +1,7 @@
 import "../styles/BattleModal.css";
 import styled from "styled-components";
-import CardMonster from "./CardMonster";
+import CardMonster from "./MonsterCard";
+import CardPlayer from "./PlayerCard";
 
 const BattleModal = ({
   onWin,
@@ -25,7 +26,9 @@ const BattleModal = ({
           <CardMonster />
           <CardMonster />
         </Monsters>
-        <Player></Player>
+        <Player>
+          <CardPlayer />
+        </Player>
         <ModalFooter>
           <BtnPrimary type="button" className="btn btn-primary" onClick={onWin}>
             Win
@@ -54,24 +57,16 @@ const ModalStyles = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
 `;
 
 const ModalHeader = styled.div`
-  padding: 10px;
 `;
 
 const ModalTitle = styled.h3`
   margin: 0;
-`;
-
-const ModalBody = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-  overflow-y: auto;
 `;
 
 const ModalFooter = styled.div`
@@ -92,18 +87,18 @@ const BtnSecondary = styled.button`
 const ModelContent = styled.div`
   background-color: #f4f7f8; /* Light blueish grey background */
   margin: auto;
-  padding: 20px;
   border: 1px solid #888;
-  width: 80vw; /* 80% of viewport width */
-  height: 80vh; /* 80% of viewport height */
+  width: 90vw; /* 80% of viewport width */
+  height: 90vh; /* 80% of viewport height */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow-y: auto; /* Enable vertical scrollbar */
+  display: grid;
+  gap: 10px;
 `;
 
 const Details = styled.div`
-  padding: 10px;
   background-color: #f3f3f3;
   border-radius: 8px;
 `;
@@ -111,16 +106,18 @@ const Details = styled.div`
 const BattleMessage = styled.p`
   color: red;
   font-size: 16px;
+  margin: 0;
 `;
 
 const Monsters = styled.div`
-  background-image: url("/path-to-monsters-image.jpg");
-  height: 300px;
-  background-size: cover;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
 `;
 
 const Player = styled.div`
-  background-image: url("/path-to-player-image.jpg");
-  height: 300px;
-  background-size: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 `;
