@@ -5,8 +5,8 @@ interface MonsterProps {
     height: number;
 }
 
-const Monster: React.FC<MonsterProps> = ({ width, height }) => {
+const GridMonster: React.FC<MonsterProps> = ({ width, height }) => {
     return <div style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>👾</div>;
 };
 
-export default Monster;
+export default GridMonster;

@@ -20,7 +20,7 @@ function App() {
   // listen for arrow keys or wasd to move player
 
   useEffect(() => {
-    const handleKeyDown = (e: any) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       console.log(e.key);
       setPlayerPosition(prevPos => {
         let newX = prevPos[0];
@@ -62,7 +62,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [showBattle]);
+  });
 
   const isMonsterSquare = (x: number, y: number) => {
     return monsterPositions.some(([monsterX, monsterY]) => monsterX === x && monsterY === y);
