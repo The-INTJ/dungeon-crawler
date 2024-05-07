@@ -1,23 +1,43 @@
-// Player card depicting a player character with health, attack, and defense power
 import styled from "styled-components";
-import playerImage from "../assets/player.jpeg";  // Ensure you have an appropriate player image
+import playerImage from "../assets/player.jpeg";
+import swordImage from "../assets/sword.svg";
+import shieldImage from "../assets/shield.svg";
+import specialImage from "../assets/special.svg";
 
 const PlayerCard = () => {
-    const player = {
-        name: "Hero",
-        health: 12,
-        attack: 2,
-        defense: 11,
-        image: playerImage,
-    };
+  const player = {
+    name: "Hero",
+    health: 12,
+    attack: 2,
+    defense: 11,
+    image: playerImage,
+    sword: {
+      svg: swordImage,
+      alt: "Sword",
+    },
+    shield: {
+      svg: shieldImage,
+      alt: "Shield",
+    },
+    special: {
+      svg: specialImage,
+      alt: "Special",
+    },
+  };
   return (
     <CardContainer>
       <PlayerImage src={player.image} alt={player.name} />
       <CardBody>
         <CardTitle>{player.name}</CardTitle>
-        <CardText>Health: {player.health}</CardText>
-        <CardText>Attack: {player.attack}</CardText>
-        <CardText>Defense: {player.defense}</CardText>
+        <PlayerItem src={player.sword.svg} alt={player.sword.alt}></PlayerItem>
+        <PlayerItem
+          src={player.shield.svg}
+          alt={player.shield.alt}
+        ></PlayerItem>
+        <PlayerItem
+          src={player.special.svg}
+          alt={player.special.alt}
+        ></PlayerItem>
       </CardBody>
     </CardContainer>
   );
@@ -49,6 +69,8 @@ const CardTitle = styled.h5`
   margin-bottom: 10px;
 `;
 
-const CardText = styled.p`
-  margin-bottom: 5px;
+const PlayerItem = styled.img`
+  max-width: 50px;
+  width: 100%;
+  height: auto;
 `;

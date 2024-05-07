@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from './Player';
+import Player from './GridPlayer';
 import Monster from './GridMonster';
 
 type Grid = number[][];
