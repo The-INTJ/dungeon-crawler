@@ -1,14 +1,8 @@
 // card depecting a monster with health and attack power
 import styled from "styled-components";
-import monsterImage from "../assets/react.svg";
+import { IMonsterCard } from "../lib/types";
 
-const MonsterCard = () => {
-    const monster = {
-        name: "Goblin",
-        health: 10,
-        attack: 2,
-        image: monsterImage,
-    };
+const MonsterCard = (monster: IMonsterCard) => {
   return (
     <CardContainer>
       <MonsterImage src={monster.image} alt={monster.name} />

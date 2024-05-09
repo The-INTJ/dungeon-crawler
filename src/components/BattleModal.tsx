@@ -2,6 +2,9 @@ import "../styles/BattleModal.css";
 import styled from "styled-components";
 import CardMonster from "./MonsterCard";
 import CardPlayer from "./PlayerCard";
+import { useState } from "react";
+import goblinImage from "../assets/goblin.png";
+import BattleGameEngine from "../lib/BattleGameEngine";
 
 const BattleModal = ({
   onWin,
@@ -10,6 +13,39 @@ const BattleModal = ({
   onWin: () => void;
   onLose: () => void;
 }) => {
+  const [monsters, setMonsters] = useState([
+    {
+      name: "Goblin",
+      health: 10,
+      attack: 2,
+      monsterType: "Goblin",
+      image: goblinImage,
+    },
+    {
+      name: "Orc",
+      health: 15,
+      attack: 3,
+      monsterType: "Orc",
+      image: goblinImage,
+    },
+    {
+      name: "Troll",
+      health: 20,
+      attack: 4,
+      monsterType: "Troll",
+      image: goblinImage,
+    },
+  ]);
+
+  const [player, setPlayer] = useState({
+    name: "Hero",
+    health: 12,
+    attack: 2,
+    defense: 11,
+  });
+
+  // const bge = new BattleGameEngine(player, monsters);
+
   return (
     <ModalStyles>
       <ModelContent>
@@ -22,12 +58,20 @@ const BattleModal = ({
           </BattleMessage>
         </Details>
         <Monsters>
-          <CardMonster />
-          <CardMonster />
-          <CardMonster />
+          <CardMonster
+            {...monsters[0]}
+          />
+          <CardMonster 
+            {...monsters[1]}
+          />
+          <CardMonster
+            {...monsters[2]}
+          />
         </Monsters>
         <Player>
-          <CardPlayer />
+          <CardPlayer
+            {...player}
+          />
         </Player>
         <ModalFooter>
           <BtnPrimary type="button" className="btn btn-primary" onClick={onWin}>

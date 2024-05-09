@@ -3,41 +3,20 @@ import playerImage from "../assets/player.jpeg";
 import swordImage from "../assets/sword.svg";
 import shieldImage from "../assets/shield.svg";
 import specialImage from "../assets/special.svg";
+import { PlayerCardProps } from "../lib/types";
+import PlayerSword from "./PlayerSword";
 
-const PlayerCard = () => {
-  const player = {
-    name: "Hero",
-    health: 12,
-    attack: 2,
-    defense: 11,
-    image: playerImage,
-    sword: {
-      svg: swordImage,
-      alt: "Sword",
-    },
-    shield: {
-      svg: shieldImage,
-      alt: "Shield",
-    },
-    special: {
-      svg: specialImage,
-      alt: "Special",
-    },
-  };
+const PlayerCard = (player: PlayerCardProps) => {
   return (
     <CardContainer>
-      <PlayerImage src={player.image} alt={player.name} />
+      <PlayerImage src={playerImage} alt={player.name} />
       <CardBody>
         <CardTitle>{player.name}</CardTitle>
-        <PlayerItem src={player.sword.svg} alt={player.sword.alt}></PlayerItem>
-        <PlayerItem
-          src={player.shield.svg}
-          alt={player.shield.alt}
-        ></PlayerItem>
-        <PlayerItem
-          src={player.special.svg}
-          alt={player.special.alt}
-        ></PlayerItem>
+        <AbilitiesContainer>
+          <PlayerSword x={0} y={0} />
+          <PlayerItem src={shieldImage} alt="Shield"></PlayerItem>
+          <PlayerItem src={specialImage} alt="Special"></PlayerItem>
+        </AbilitiesContainer>
       </CardBody>
     </CardContainer>
   );
@@ -73,4 +52,11 @@ const PlayerItem = styled.img`
   max-width: 50px;
   width: 100%;
   height: auto;
+`;
+
+const AbilitiesContainer = styled.div`
+  display: grid;
+  justify-content: center;
+  margin-top: 10px;
+  grid-template-columns: repeat(3, 1fr);
 `;
